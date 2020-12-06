@@ -30,6 +30,23 @@ export function escapeString(s: string, languageId: string)
 			.replace(/`/g, "\\`")
 			.replace(/\${/g, "\\${");
 		return "`" + escaped + "`";
+	} else if (languageId === "cpp") {
+		// Raw string literal https://en.cppreference.com/w/cpp/language/string_literal
+		// By default string begins with R"( and ends with )". The problem is when there's )" inside the string. There are no escape characters.
+		// The only way is to use optional delimiter, which goes between quote and parentheses. For example: R"#(content)#". But what if content
+		// contains the )#" ? A different delimiter needs to be choosen...
+		const delimiters = [ "!", "@", "#", "$", "%", "^", "&", "*", "~", "`", "-", "_", "=", "+" ];
+		let d = "";
+		let endSequence = `)${d}"`;
+		while (s.includes(endSequence) && delimiters.length > 0) {
+			d = delimiters.shift()!;
+			endSequence = `)${d}"`;
+		}
+		if (s.includes(endSequence)) {
+			console.log("Unable to create escaped string because original string contains all supported delimiters");
+			return s;
+		}
+		return `R"${d}(` + s + `)${d}"`;
 	} else {
 		return s;
 	}
