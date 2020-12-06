@@ -4,7 +4,7 @@ All notable changes to the "escape-string" extension will be documented in this 
 
 ## [Unreleased]
 
-- Add support for C, C++
+- Add support for C, C++, Python
 
 ## 1.0.1
 

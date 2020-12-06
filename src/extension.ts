@@ -53,6 +53,17 @@ export function escapeString(s: string, languageId: string, eol: string)
 			.replace(/\\/g, "\\\\") // backslashes first
 			.replace(/"/g, "\\\"");
 		return escaped.split(/\r?\n/).map((s, idx, arr) => `"${s}${idx !== arr.length-1 ? '\\n' : ''}"`).join(eol);
+	} else if (languageId === 'python') {
+		return s.split(/\r?\n/).map((line, idx, arr) => {
+			const singleQuoteCount = line.split("'").length - 1;
+			const doubleQuoteCount = line.split('"').length - 1;
+			const delimiterQuote = singleQuoteCount >= doubleQuoteCount ? '"' : "'";
+			const escaped = line
+				.replace(/\\/g, "\\\\") // backslashes first
+				.replace(new RegExp(delimiterQuote, "g"), `\\${delimiterQuote}`);
+			const isLastLine = idx === arr.length - 1;
+			return `${delimiterQuote}${escaped}${!isLastLine ? '\\n' : ''}${delimiterQuote}${(!isLastLine) ? ' \\' : ''}`;
+		}).join(eol);
 	} else {
 		return s;
 	}
