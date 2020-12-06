@@ -29,7 +29,7 @@
     "menus": {
       "editor/context": [
         {
-          "when": "resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp",
+          "when": "resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp || resourceLangId == c",
           "command": "escape-string.pasteEscapedString",
           "group": "9_cutcopypaste@3"
         }

@@ -6,6 +6,7 @@ This **Escape String** VSCode extension helps you with that by adding `Paste esc
 ## Features
 
 `Paste escaped string` is available by right clicking on a text editor for supported types of files:
+* C
 * C++
 * C#
 * JavaScript

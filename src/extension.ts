@@ -10,14 +10,15 @@ export async function pasteEscapedString()
 	if (activeEditor) {
 		const clipText = await vscode.env.clipboard.readText();
 		if (clipText) {
+			const eol = activeEditor.document.eol === vscode.EndOfLine.LF ? "\n" : "\r\n";
 			await activeEditor.edit((editBuilder: vscode.TextEditorEdit) => {
-				editBuilder.replace(activeEditor.selection, escapeString(clipText, activeEditor.document.languageId));
+				editBuilder.replace(activeEditor.selection, escapeString(clipText, activeEditor.document.languageId, eol));
 			});
 		}
 	}
 }
 
-export function escapeString(s: string, languageId: string)
+export function escapeString(s: string, languageId: string, eol: string)
 {
 	if (languageId === "csharp") {
 		// https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/verbatim
@@ -47,6 +48,11 @@ export function escapeString(s: string, languageId: string)
 			return s;
 		}
 		return `R"${d}(` + s + `)${d}"`;
+	} else if (languageId === "c") {
+		const escaped = s
+			.replace(/\\/g, "\\\\") // backslashes first
+			.replace(/"/g, "\\\"");
+		return escaped.split(/\r?\n/).map((s, idx, arr) => `"${s}${idx !== arr.length-1 ? '\\n' : ''}"`).join(eol);
 	} else {
 		return s;
 	}
