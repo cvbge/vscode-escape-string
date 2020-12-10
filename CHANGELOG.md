@@ -2,7 +2,7 @@
 
 All notable changes to the "escape-string" extension will be documented in this file.
 
-## [Unreleased]
+## 1.1.0
 
 - Add support for C, C++, Python
 
