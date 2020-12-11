@@ -11,7 +11,7 @@ suite('extension', function() {
 				{ languageIds: ['python'], expected: '"foo"' },
 			]},
 			{ original: '"foo"', escaped: [
-				{ languageIds: ['csharp'], expected: '@"""foo"""' }, // double quotes need to be escaped
+				{ languageIds: ['csharp'], expected: '@"""foo"""' },
 				{ languageIds: ['javascript', 'typescript'], expected: '`"foo"`' },
 				{ languageIds: ['cpp'], expected: 'R"("foo")"' },
 				{ languageIds: ['c'], expected: '"\\"foo\\""' },
@@ -26,14 +26,14 @@ suite('extension', function() {
 			]},
 			{ original: 'foo\\bar', escaped: [
 				{ languageIds: ['csharp'], expected: '@"foo\\bar"' },
-				{ languageIds: ['javascript', 'typescript'], expected: '`foo\\\\bar`' }, // backslash need to be escaped
+				{ languageIds: ['javascript', 'typescript'], expected: '`foo\\\\bar`' },
 				{ languageIds: ['cpp'], expected: 'R"(foo\\bar)"' },
 				{ languageIds: ['c'], expected: '"foo\\\\bar"' },
 				{ languageIds: ['python'], expected: '"foo\\\\bar"' },
 			]},
 			{ original: 'back`stick', escaped: [
 				{ languageIds: ['csharp'], expected: '@"back`stick"' },
-				{ languageIds: ['javascript', 'typescript'], expected: '`back\\`stick`' }, // backstick needs to be escaped
+				{ languageIds: ['javascript', 'typescript'], expected: '`back\\`stick`' },
 				{ languageIds: ['cpp'], expected: 'R"(back`stick)"' },
 				{ languageIds: ['c'], expected: '"back`stick"' },
 				{ languageIds: ['python'], expected: '"back`stick"' },
@@ -51,7 +51,7 @@ suite('extension', function() {
 			]},
 			{ original: 'Foo ${bar} baz', escaped: [
 				{ languageIds: ['csharp'], expected: '@"Foo ${bar} baz"' },
-				{ languageIds: ['javascript', 'typescript'], expected: '`Foo \\${bar} baz`' }, // ${ needs to be escaped
+				{ languageIds: ['javascript', 'typescript'], expected: '`Foo \\${bar} baz`' },
 				{ languageIds: ['cpp'], expected: 'R"(Foo ${bar} baz)"' },
 				{ languageIds: ['c'], expected: '"Foo ${bar} baz"' },
 				{ languageIds: ['python'], expected: '"Foo ${bar} baz"' },
