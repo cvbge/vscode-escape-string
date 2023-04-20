@@ -59,9 +59,21 @@ export function escapeString(s: string, languageId: string, eol: string)
 			const isLastLine = idx === arr.length - 1;
 			return `${delimiterQuote}${escaped}${!isLastLine ? '\\n' : ''}${delimiterQuote}${(!isLastLine) ? ' \\' : ''}`;
 		}).join(eol);
-	} else {
-		return s;
-	}
+
+        } else if (languageId === "java") {
+        const escaped = s
+            .replace(/\\/g, "\\\\") // backslashes first
+            .replace(/"/g, "\\\"")
+            .replace(/'/g, "\\'")
+            .replace(/\n/g, "\\n")
+            .replace(/\r/g, "\\r")
+            .replace(/\t/g, "\\t")
+            .replace(/\b/g, "\\b")
+            .replace(/\f/g, "\\f");
+        return escaped.split(/\r?\n/).map((s, idx, arr) => `"${s}${idx !== arr.length - 1 ? '\\n' : ''}"`).join(eol);
+    } else {
+        return s;
+    }
 }
 
 export function deactivate() {}
