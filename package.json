@@ -1,12 +1,12 @@
 {
-  "name": "escape-string",
-  "displayName": "Escape String",
-  "description": "Escape string when pasting",
-  "version": "1.1.0",
-  "publisher": "cvbge",
+  "name": "escape-string-for-java",
+  "displayName": "Escape String with Java support",
+  "description": "Escape string when pasting into multiple languages",
+  "version": "1.0.0",
+  "publisher": "MarcusSattler",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cvbge/vscode-escape-string.git"
+    "url": "https://github.com/MarcusGSattler/vscode-escape-string-java"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
   "engines": {
@@ -26,10 +26,19 @@
         "title": "Paste escaped string"
       }
     ],
+    "keybindings": [
+      {
+        "command": "escape-string.pasteEscapedString",
+        "key": "Cmd+Alt+v",
+        "key": "Ctrl+Alt+v",
+        "when": "editorTextFocus"
+      }
+    ],
+
     "menus": {
       "editor/context": [
         {
-          "when": "resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp || resourceLangId == c || resourceLangId == python",
+          "when": "resourceLangId == java || resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp || resourceLangId == c || resourceLangId == python",
           "command": "escape-string.pasteEscapedString",
           "group": "9_cutcopypaste@3"
         }

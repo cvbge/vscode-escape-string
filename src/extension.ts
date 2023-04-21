@@ -68,7 +68,6 @@ export function escapeString(s: string, languageId: string, eol: string)
             .replace(/\n/g, "\\n")
             .replace(/\r/g, "\\r")
             .replace(/\t/g, "\\t")
-            .replace(/\b/g, "\\b")
             .replace(/\f/g, "\\f");
         return escaped.split(/\r?\n/).map((s, idx, arr) => `"${s}${idx !== arr.length - 1 ? '\\n' : ''}"`).join(eol);
     } else {

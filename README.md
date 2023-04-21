@@ -12,6 +12,7 @@ This **Escape String** VSCode extension helps you with that by adding `Paste esc
 * JavaScript
 * Python
 * TypeScript
+* Java
 
 It will paste content of clipboard as a string, in format specific for given file/programming language, with special characters escaped.
 
