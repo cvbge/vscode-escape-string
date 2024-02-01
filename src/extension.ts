@@ -43,7 +43,10 @@ export function escapeString(s: string, languageId: string, eol: string)
 			return s;
 		}
 		return `R"${delimiter}(` + s + `)${delimiter}"`;
-	} else if (languageId === "c") {
+  } else if (languageId === "json") {
+      const json = JSON.stringify(s);
+    	return json.substring(1, json.length -1);
+  } else if (languageId === "c") {
 		const escaped = s
 			.replace(/\\/g, "\\\\") // backslashes first
 			.replace(/"/g, "\\\"");
