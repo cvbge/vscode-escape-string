@@ -26,7 +26,7 @@
     "menus": {
       "editor/context": [
         {
-          "when": "resourceLangId == json || resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp || resourceLangId == c || resourceLangId == python",
+          "when": "resourceLangId == csharp || resourceLangId == javascript || resourceLangId == typescript || resourceLangId == cpp || resourceLangId == c || resourceLangId == python || resourceLangId == json",
           "command": "escape-string.pasteEscapedString",
           "group": "9_cutcopypaste@3"
         }

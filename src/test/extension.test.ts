@@ -12,6 +12,7 @@ suite('extension', function ()
 					{ languageIds: ['javascript', 'typescript'], expected: '`foo`' },
 					{ languageIds: ['cpp'], expected: 'R"(foo)"' },
 					{ languageIds: ['python'], expected: '"foo"' },
+					{ languageIds: ['json'], expected: '"foo"' },
 				]
 			},
 			{
@@ -21,6 +22,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"("foo")"' },
 					{ languageIds: ['c'], expected: '"\\"foo\\""' },
 					{ languageIds: ['python'], expected: `'"foo"'` },
+					{ languageIds: ['json'], expected: `"\\"foo\\""` },
 				]
 			},
 			{
@@ -30,6 +32,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"("foo" "bar")"' },
 					{ languageIds: ['c'], expected: '"\\"foo\\" \\"bar\\""' },
 					{ languageIds: ['python'], expected: `'"foo" "bar"'` },
+					{ languageIds: ['json'], expected: `"\\"foo\\" \\"bar\\""` },
 				]
 			},
 			{
@@ -39,6 +42,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"(foo\\bar)"' },
 					{ languageIds: ['c'], expected: '"foo\\\\bar"' },
 					{ languageIds: ['python'], expected: '"foo\\\\bar"' },
+					{ languageIds: ['json'], expected: '"foo\\\\bar"' },
 				]
 			},
 			{
@@ -48,6 +52,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"(back`stick)"' },
 					{ languageIds: ['c'], expected: '"back`stick"' },
 					{ languageIds: ['python'], expected: '"back`stick"' },
+					{ languageIds: ['json'], expected: '"back`stick"' },
 				]
 			},
 			{
@@ -57,6 +62,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"(multi\nline)"' },
 					{ languageIds: ['c'], expected: '"multi\\n"\n"line"' },
 					{ languageIds: ['python'], expected: '"multi\\n" \\\n"line"' },
+					{ languageIds: ['json'], expected: '"multi\\nline"' },
 				]
 			},
 			{
@@ -72,6 +78,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"(Foo ${bar} baz)"' },
 					{ languageIds: ['c'], expected: '"Foo ${bar} baz"' },
 					{ languageIds: ['python'], expected: '"Foo ${bar} baz"' },
+					{ languageIds: ['json'], expected: '"Foo ${bar} baz"' },
 				]
 			},
 			{
@@ -81,6 +88,7 @@ suite('extension', function ()
 					{ languageIds: ['cpp'], expected: 'R"("Foo\\bar" ${bar} "`grep`")"' },
 					{ languageIds: ['c'], expected: '"\\"Foo\\\\bar\\" ${bar} \\"`grep`\\""' },
 					{ languageIds: ['python'], expected: '\'"Foo\\\\bar" ${bar} "`grep`"\'' },
+					{ languageIds: ['json'], expected: '"\\"Foo\\\\bar\\" ${bar} \\"`grep`\\""' },
 				]
 			},
 			{
