@@ -15,9 +15,6 @@
   "categories": [
     "Programming Languages"
   ],
-  "activationEvents": [
-    "onCommand:escape-string.pasteEscapedString"
-  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
