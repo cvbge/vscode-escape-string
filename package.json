@@ -23,6 +23,15 @@
         "title": "Paste escaped string"
       }
     ],
+    "activationEvents": [
+      "onLanguage:csharp",
+      "onLanguage:javascript",
+      "onLanguage:typescript",
+      "onLanguage:cpp",
+      "onLanguage:c",
+      "onLanguage:python",
+      "onLanguage:json"
+    ],
     "menus": {
       "editor/context": [
         {
