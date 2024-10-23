@@ -9,6 +9,7 @@ This **Escape String** VSCode extension helps you with that by adding `Paste esc
 * C
 * C++
 * C#
+* JSON
 * JavaScript
 * Python
 * TypeScript
