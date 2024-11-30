@@ -4,6 +4,11 @@ All notable changes to the "escape-string" extension will be documented in this 
 
 ## Next
 
+## 1.2.1
+
+- Increase minimal supported VSCode to 1.74.0
+- Update dependencies
+
 ## 1.2.0
 
 - Add support for JSON (#1) by @jlewin
