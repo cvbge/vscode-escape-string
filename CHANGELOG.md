@@ -5,6 +5,7 @@ All notable changes to the "escape-string" extension will be documented in this 
 ## Next
 
 - Add support for JSON (#1) by @jlewin
+- Fix incorrect or inefficient \n encoding at the end of pasted string in C and Python.
 
 ## 1.1.0
 

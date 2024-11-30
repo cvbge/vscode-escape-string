@@ -25,13 +25,18 @@ export function escapeString(s: string, languageId: string, eol: string)
 
 function cEscape(s: string, eol: string): string
 {
-    const escaped = s
+    const escapedLines = s
         .replace(/\\/g, "\\\\") // backslashes first
-        .replace(/"/g, "\\\"");
-    return escaped
+        .replace(/"/g, "\\\"")
         .split(/\r?\n/)
-        .map((s, idx, arr) => `"${s}${idx !== arr.length - 1 ? '\\n' : ''}"`)
-        .join(eol);
+        .map((line, idx, arr) => `"${line}${idx !== arr.length - 1 ? '\\n' : ''}"`);
+
+    // drop empty string "" after last line, it's not changing the value of the string
+    if (escapedLines.at(-1) === '""') {
+        escapedLines.pop();
+    }
+
+    return escapedLines.join(eol);
 }
 
 
@@ -79,7 +84,7 @@ function jsonEscape(s: string): string
 
 function pythonEscape(s: string, eol: string): string
 {
-    return s.split(/\r?\n/).map((line, idx, arr) =>
+    const escapedLines = s.split(/\r?\n/).map((line, idx, arr) =>
     {
         const singleQuoteCount = line.split("'").length - 1;
         const doubleQuoteCount = line.split('"').length - 1;
@@ -88,6 +93,13 @@ function pythonEscape(s: string, eol: string): string
             .replace(/\\/g, "\\\\") // backslashes first
             .replace(new RegExp(delimiterQuote, "g"), `\\${delimiterQuote}`);
         const isLastLine = idx === arr.length - 1;
-        return `${delimiterQuote}${escaped}${!isLastLine ? '\\n' : ''}${delimiterQuote}${(!isLastLine) ? ' \\' : ''}`;
-    }).join(eol);
+        return `${delimiterQuote}${escaped}${!isLastLine ? '\\n' : ''}${delimiterQuote}`;
+    });
+
+    // drop empty string "" after last line, it's not changing the value of the string
+    if (escapedLines.at(-1) === '""') {
+        escapedLines.pop();
+    }
+
+    return escapedLines.join(` \\${eol}`);
 }

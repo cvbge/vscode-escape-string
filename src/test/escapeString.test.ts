@@ -64,6 +64,26 @@ suite('escapeString', function ()
 			]
 		},
 		{
+			original: '\nnewline_at_start', escaped: [
+				{ languageIds: ['csharp'], expected: '@"\nnewline_at_start"' },
+				{ languageIds: ['javascript', 'typescript'], expected: '`\nnewline_at_start`' },
+				{ languageIds: ['cpp'], expected: 'R"(\nnewline_at_start)"' },
+				{ languageIds: ['c'], expected: '"\\n"\n"newline_at_start"' },
+				{ languageIds: ['python'], expected: '"\\n" \\\n"newline_at_start"' },
+				{ languageIds: ['json'], expected: '"\\nnewline_at_start"' },
+			]
+		},
+		{
+			original: 'newline_at_end\n', escaped: [
+				{ languageIds: ['csharp'], expected: '@"newline_at_end\n"' },
+				{ languageIds: ['javascript', 'typescript'], expected: '`newline_at_end\n`' },
+				{ languageIds: ['cpp'], expected: 'R"(newline_at_end\n)"' },
+				{ languageIds: ['c'], expected: '"newline_at_end\\n"' },
+				{ languageIds: ['python'], expected: '"newline_at_end\\n"' },
+				{ languageIds: ['json'], expected: '"newline_at_end\\n"' },
+			]
+		},
+		{
 			original: 'very\r\nmulti\n\nline\r\n\r\nstring\r', escaped: [
 				{ languageIds: ['c'], expected: '"very\\n"\n"multi\\n"\n"\\n"\n"line\\n"\n"\\n"\n"string\r"' },
 				{ languageIds: ['python'], expected: '"very\\n" \\\n"multi\\n" \\\n"\\n" \\\n"line\\n" \\\n"\\n" \\\n"string\r"' },
