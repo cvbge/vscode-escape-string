@@ -2,7 +2,7 @@
   "name": "escape-string",
   "displayName": "Escape String",
   "description": "Escape string when pasting",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "cvbge",
   "repository": {
     "type": "git",
